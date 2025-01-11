@@ -1,7 +1,7 @@
 import pubg from "../assets/freepik__the-style-is-candid-image-photography-with-natural__50656.jpeg";
 import cod from "../assets/cod.jpeg";
-import gta from "../assets/gta.png";
-import angry from "../assets/angry.png";
+import gta from "../assets/GTA.png";
+import angry from "../assets/Angry.png";
 import war from "../assets/war.png";
 import saga from "../assets/saga.png";
 export const navItems = [

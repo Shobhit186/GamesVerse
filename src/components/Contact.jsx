@@ -1,4 +1,4 @@
-import contact from "../assets/contact.png";
+import contact from "../assets/Contact.png";
 import { useState } from "react";
 const Contact = () => {
   const [formData, setFormData] = useState({
