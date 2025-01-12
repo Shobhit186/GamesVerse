@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import logoSvg from "../assets/logo.svg";
 import { navItems } from "../constants/constants";
+import { SignInButton, SignedIn, SignedOut, SignUpButton, UserButton } from "@clerk/clerk-react";
 const Navbar = () => {
   const [mobileView, setMobileView] = useState(false);
 
@@ -26,18 +27,23 @@ const Navbar = () => {
             ))}
           </ul>
           <div className="hidden lg:flex space-x-12 justify-center items-center">
+            <SignedOut>
+            <a
+              href="#"
+              className="py-2 px-3 border rounded-md hover:text-black bg-gradient-to-r from-orange-500 to-red-500"
+            ><SignInButton /></a>
+            <a
+              href="#"
+              className="bg-gradient-to-r from-cyan-500 to-blue-500 py-2 px-3 border rounded-md hover:text-black"
+            ><SignUpButton /></a>
+            </SignedOut>
+            <SignedIn>
             <a
               href="#"
               className="py-2 px-3 border rounded-md hover:text-black bg-gradient-to-r from-orange-500 to-red-500"
             >
-              Login
-            </a>
-            <a
-              href="#"
-              className="bg-gradient-to-r from-cyan-500 to-blue-500 py-2 px-3 border rounded-md hover:text-black"
-            >
-              Register
-            </a>
+              <UserButton /></a>
+            </SignedIn>
           </div>
           <div className="lg:hidden flex-col justify-end md:flex">
             <button onClick={toggleMobileView}>
