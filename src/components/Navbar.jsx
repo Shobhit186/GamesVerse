@@ -2,7 +2,13 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import logoSvg from "../assets/logo.svg";
 import { navItems } from "../constants/constants";
-import { SignInButton, SignedIn, SignedOut, SignUpButton, UserButton } from "@clerk/clerk-react";
+import {
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  SignUpButton,
+  UserButton,
+} from "@clerk/clerk-react";
 const Navbar = () => {
   const [mobileView, setMobileView] = useState(false);
 
@@ -15,7 +21,9 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center flex-shrink-0">
             <img className="w-10 h-10 mr-2" src={logoSvg} alt="logo" />
-            <span className="tracking-tight text-lg bg-gradient-to-r from-cyan-500 to-red-500 bg-clip-text text-transparent">GamesVerse</span>
+            <span className="tracking-tight text-lg bg-gradient-to-r from-cyan-500 to-red-500 bg-clip-text text-transparent">
+              GamesVerse
+            </span>
           </div>
           <ul className="hidden lg:flex ml-14 space-x-12">
             {navItems.map((item, index) => (
@@ -28,27 +36,41 @@ const Navbar = () => {
           </ul>
           <div className="hidden lg:flex space-x-12 justify-center items-center">
             <SignedOut>
-            <a
-              href="#"
-              className="py-2 px-3 border rounded-md hover:text-black bg-gradient-to-r from-orange-500 to-red-500"
-            ><SignInButton /></a>
-            <a
-              href="#"
-              className="bg-gradient-to-r from-cyan-500 to-blue-500 py-2 px-3 border rounded-md hover:text-black"
-            ><SignUpButton /></a>
+              <a
+                href="#"
+                className="py-2 px-3 border rounded-md hover:text-black bg-gradient-to-r from-orange-500 to-red-500"
+              >
+                <SignInButton />
+              </a>
+              <a
+                href="#"
+                className="bg-gradient-to-r from-cyan-500 to-blue-500 py-2 px-3 border rounded-md hover:text-black"
+              >
+                <SignUpButton />
+              </a>
             </SignedOut>
             <SignedIn>
-            <a
-              href="#"
-              className="py-2 px-3 border rounded-md hover:text-black bg-gradient-to-r from-orange-500 to-red-500"
-            >
-              <UserButton /></a>
+              <a
+                href="#"
+                className="py-2 px-3 border rounded-md hover:text-black bg-gradient-to-r from-orange-500 to-red-500"
+              >
+                <UserButton />
+              </a>
             </SignedIn>
           </div>
-          <div className="lg:hidden flex-col justify-end md:flex">
-            <button onClick={toggleMobileView}>
+          <div className="lg:hidden flex justify-end md:flex">
+            <button onClick={toggleMobileView} className="mr-6">
               {mobileView ? <X /> : <Menu />}
             </button>
+
+            <SignedIn>
+              <a
+                href="#"
+                className="py-2 px-3 border rounded-md hover:text-black bg-gradient-to-r from-orange-500 to-red-500"
+              >
+                <UserButton />
+              </a>
+            </SignedIn>
           </div>
         </div>
         {mobileView && (
@@ -63,18 +85,20 @@ const Navbar = () => {
               ))}
             </ul>
             <div className="flex space-x-6 mt-2">
-              <a
-                href="#"
-                className="bg-gradient-to-r from-orange-500 to-red-500 hover:text-black px-3 py-2 border rounded-md"
-              >
-                Login
-              </a>
-              <a
-                href="#"
-                className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:text-black py-2 px-3 border rounded-md"
-              >
-                Register
-              </a>
+              <SignedOut>
+                <a
+                  href="#"
+                  className="bg-gradient-to-r from-orange-500 to-red-500 hover:text-black px-3 py-2 border rounded-md"
+                >
+                  <SignInButton />
+                </a>
+                <a
+                  href="#"
+                  className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:text-black py-2 px-3 border rounded-md"
+                >
+                  <SignUpButton />
+                </a>
+              </SignedOut>
             </div>
           </div>
         )}
